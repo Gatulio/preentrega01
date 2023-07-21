@@ -1,3 +1,37 @@
+const cigarrillos = [
+    {
+        marca: 'Phillips Morris',
+        precio: 700
+    },
+    {
+        marca: 'Marlboro',
+        precio: 750
+    },
+    {
+        marca: 'Camel',
+        precio: 650
+    }
+]
+
+const lista = (cigarrillos) => {
+    return cigarrillos.map((cigarrillo, i) => {
+        return `${i+1}. ${cigarrillo.marca} $${cigarrillo.precio} `
+    })
+}
+console.log(lista(cigarrillos))
+
+const listita = lista(cigarrillos)
+
+const transform = (cigarritos) => {
+    let cigarroMsj = ''
+    cigarritos.forEach((cigarrito, i ) => {
+        cigarroMsj += cigarrito
+    });
+    return cigarroMsj
+}
+
+
+const cigarroMsj = transform(listita)
 alert('Buenas noches, esto es una tienda de cigarrillos.')
 
 const comprarCigarros = () => {
@@ -9,7 +43,7 @@ const comprarCigarros = () => {
 
     do {
         alert('Que quiere comprar? Por favor ingrese la opcion deseada con el numero asignado.')
-        cigarros = parseInt(prompt('1. Phillip Morris $700\n2. Marlboro $750\n3. Camel $650'))
+        cigarros = parseInt(prompt(cigarroMsj))
 
         let cigarroOk = cigarroCheck(cigarros)
 
@@ -19,6 +53,7 @@ const comprarCigarros = () => {
 
         switch (cigarroOk) {
             case 1:
+
                 precio = 700
                 break
             case 2:
@@ -28,7 +63,6 @@ const comprarCigarros = () => {
                 precio = 650
                 break
             default:
-                // alert('Por favor, ingrese una opcion numerica valida.')
                 precio = 0
                 atadosOk = 0
         }
@@ -42,15 +76,15 @@ const comprarCigarros = () => {
 }
 
 const cigarroCheck = (cigarros) => {
-    while (Number.isNaN(cigarros) || cigarros === 0 || cigarros < 0 || cigarros > 3){
+    while (Number.isNaN(cigarros) || cigarros <= 0 || cigarros > 3) {
         alert('Por favor, ingrese una opcion valida.')
-        cigarros = parseInt(prompt('1. Phillip Morris\n2. Marlboro\n3. Camel'))
+        cigarros = parseInt(prompt(cigarroMsj))
     }
     return cigarros
 }
 
 const atadoCheck = (atados) => {
-    while (Number.isNaN(atados) || atados === 0 || atados < 0){
+    while (Number.isNaN(atados) || atados === 0 || atados < 0) {
         alert('Por favor, ingrese una cantidad valida')
         atados = parseInt(prompt('Cuantos atados queres comprar?'))
     }
@@ -60,4 +94,3 @@ const atadoCheck = (atados) => {
 let total = comprarCigarros()
 alert('Gracias por comprar en el kiosco man.')
 alert('El total de su compra es de $' + total)
-// console.log(total)
